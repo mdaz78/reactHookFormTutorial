@@ -68,7 +68,7 @@ const YouTubeForm = () => {
 
   console.log({ touchedFields, dirtyFields, isDirty });
 
-  // watch accepts an array as well it will watch all the fields in the array, you can also not pass anything to watch to watch all fields
+  // watch accepts an array as well it will watch all the fields in the array, you can also not pass anything to watch all fields
   const watchUserName = watch("username");
 
   useEffect(() => {
