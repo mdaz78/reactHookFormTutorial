@@ -40,7 +40,7 @@ const YouTubeForm = () => {
     console.log({ data });
   };
 
-  const { register, control, handleSubmit, formState, watch } = form;
+  const { register, control, handleSubmit, formState, watch, getValues } = form;
   const { errors } = formState;
 
   // watch accepts an array as well it will watch all the fields in the array, you can also not pass anything to watch to watch all fields
@@ -234,6 +234,9 @@ const YouTubeForm = () => {
         </div>
 
         <button type="submit">Submit</button>
+        <button type="button" onClick={() => console.log(getValues())}>
+          Get Values
+        </button>
       </form>
       <DevTool control={control} />
     </div>
