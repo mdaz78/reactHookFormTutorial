@@ -1,4 +1,5 @@
 import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 type FormValues = {
@@ -39,8 +40,21 @@ const YouTubeForm = () => {
     console.log({ data });
   };
 
-  const { register, control, handleSubmit, formState } = form;
+  const { register, control, handleSubmit, formState, watch } = form;
   const { errors } = formState;
+
+  // watch accepts an array as well it will watch all the fields in the array, you can also not pass anything to watch to watch all fields
+  const watchUserName = watch("username");
+
+  useEffect(() => {
+    const subscription = watch((value) => {
+      console.log({ value });
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [watch]);
 
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
@@ -49,6 +63,8 @@ const YouTubeForm = () => {
 
   return (
     <div>
+      <h1>YouTube Form</h1>
+      <h2>{watchUserName}</h2>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="form-control">
           <label htmlFor="username">Name</label>
