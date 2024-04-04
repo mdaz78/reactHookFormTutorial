@@ -149,6 +149,10 @@ const YouTubeForm = () => {
             id="twitter"
             {...register("socials.twitter", {
               required: "Twitter handle is required",
+              // when a field is marked as disabled, it will not be validated and the value will be undefined
+              disabled: true,
+              // enabling and disabling dynamically
+              // disabled: watch("channel") === "test",
             })}
           />
           <p className="error">{errors.socials?.twitter?.message}</p>
