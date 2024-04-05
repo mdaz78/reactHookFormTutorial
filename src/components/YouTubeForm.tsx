@@ -68,7 +68,7 @@ const YouTubeForm = () => {
         getValues,
         setValue,
     } = form;
-    const {errors, touchedFields, dirtyFields, isDirty} = formState;
+    const {errors, touchedFields, dirtyFields, isDirty, isValid} = formState;
 
     console.log({touchedFields, dirtyFields, isDirty});
 
@@ -266,7 +266,7 @@ const YouTubeForm = () => {
                     <p className="error">{errors.dob?.message}</p>
                 </div>
 
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={!isDirty || !isValid}>Submit</button>
                 <button type="button" onClick={() => console.log(getValues())}>
                     Get Values
                 </button>
