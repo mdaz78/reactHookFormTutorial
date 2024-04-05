@@ -69,7 +69,9 @@ const YouTubeForm = () => {
     getValues,
     setValue,
     reset,
+    trigger,
   } = form;
+
   const {
     errors,
     touchedFields,
@@ -300,6 +302,9 @@ const YouTubeForm = () => {
         </button>
         <button type="button" onClick={() => reset()}>
           Reset
+        </button>
+        <button type="button" onClick={() => trigger()}>
+          Validate
         </button>
       </form>
       <DevTool control={control} />
