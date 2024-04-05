@@ -34,6 +34,7 @@ const YouTubeForm = () => {
       age: 0,
       dob: new Date(),
     },
+    mode: "onBlur", // onTouched, onChange, onSubmit, all, Default is onSubmit mode
   });
 
   const onSubmit = (data: FormValues) => {
