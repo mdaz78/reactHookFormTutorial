@@ -67,9 +67,17 @@ const YouTubeForm = () => {
     watch,
     getValues,
     setValue,
+    reset,
   } = form;
-  const { errors, touchedFields, dirtyFields, isDirty, isValid, isSubmitting } =
-    formState;
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitSuccessful,
+  } = formState;
 
   console.log({ touchedFields, dirtyFields, isDirty });
 
@@ -85,6 +93,12 @@ const YouTubeForm = () => {
       subscription.unsubscribe();
     };
   }, [watch]);
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
@@ -275,6 +289,9 @@ const YouTubeForm = () => {
         </button>
         <button type="button" onClick={handleSetValue}>
           Set Value
+        </button>
+        <button type="button" onClick={() => reset()}>
+          Reset
         </button>
       </form>
       <DevTool control={control} />
